@@ -1,0 +1,7 @@
+name: d2-ci
+on: [push, pull_request]
+jobs:
+  d2-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "d2 ci ok"
