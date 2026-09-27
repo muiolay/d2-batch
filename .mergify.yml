@@ -1,0 +1,19 @@
+merge_queue:
+  mode: isolated
+
+queue_rules:
+  - name: default
+    batch_size: 2
+    batch_max_wait_time: 8 min
+    queue_conditions:
+      - base=main
+    merge_conditions:
+      - check-success=d2-ci
+
+pull_request_rules:
+  - name: queue every pull request against main
+    conditions:
+      - base=main
+    actions:
+      queue:
+        name: default
